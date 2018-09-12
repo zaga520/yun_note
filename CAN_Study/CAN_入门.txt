@@ -1,0 +1,97 @@
+1.目标：分布，实时，安全，低价
+
+2.分三层：object layer, transfer layer, physical layer
+
+3.object layer: 找出哪个message要发送和接受，提供接口给APP
+    message filter
+    status handling
+
+4.transfer layer: 成帧, 仲裁, 错误侦查, error signaling, fault confinement
+    message framing
+    arbitration
+    acknowledgment
+    Error Detection and signaling
+    Fault confinement
+    
+5.physical layer
+    signal level and bit representation
+    transmission medium
+
+6.CAN的特点：优先级，延迟保证，可配置，多主， 错误侦查和发送，自动重发， 判断临时错误和永久错误
+
+7.message: 固定格式 ，有限不同的长度，bus free的时候允许发送
+
+8.System Flexibility: 新节点能加入到网络中，不需要软件和硬件的改变
+
+9.Message Routing : message被ID所标识，ID不是目的地址，任何节点能通过Filter 来决定是否接受
+
+10.Muticast
+
+11.Data consistency
+
+12.Remote Data Request: 一个请求数据的节点要求另一个节点发送数据
+
+13.safety
+    Error Detection
+        1) BIT ERROR
+            monitoring 发送方监控 要发送 的bit位和 在bus实际 bit位 的比较(除了发送ID和ACK的时候)
+        2) 位填充    
+        3) CRC校验
+        4) 帧check
+        5) ACK ERROR
+            发送方没有在ACK发现有人回复显性位
+            
+    Error Signaling 
+        一检测到错误，则在下一个bit位发送Error Flag
+    
+    Fault Confinement
+        一个节点可能有三种状态 1) error active;  2) error passive; 3) bus off
+        
+        the 'error active' 节点能正常参与bus通信，一检测到错误，则发送ACTIVE ERROR FLAG
+        
+        The ’error passive’ station waits for six consecutive bits of equal polarity, beginning at the start of the PASSIVE ERROR FLAG. The PASSIVE
+        ERROR FLAG is complete when these 6 equal bits have been detected.
+        
+        bus off  节点 不允许对BUS有影响
+        
+    
+14.Frame type
+    DATA Frame
+    Remote Frame
+    Error Frame (任何一个检测到一个bus error 的节点发送错误帧)
+    Overload Frame (用来提供额外的延迟 对于数据帧和远程帧的发送前后)
+    
+15.DATA Frame
+    构成：
+    Start of Frame      用于标记数据帧和远程帧的开始，包含一个显性位。只有在BUS IDLE下发送。所有的节点必须同步这个信号(硬同步)
+    Arbitration         包含ID和RTR-Bit(Remote Transmission Request)
+    Control             包含DLC(Data Length Code) 和 2个预留位
+    Data
+    CRC
+    ACK                 有2bit ACK Slot(任何正确接受该报文的节点回复该ACK) 和 ACK Delimiter
+    End of Frame        7个隐性位
+    
+16.Error Frame
+    构成
+    Error Flag          来自多个站，会叠加。
+                        "error active" station      ACTIVE ERROR(6个显性位) Flag
+                        "error passive" station     PASSIVE ERROR(6个隐性位) Flag
+                            
+    Error Delimiter     8个隐性位
+    
+17.Overload Frame
+   主要都是在帧间隙中发送
+   作为接受者，要求下一个数据帧和远程帧需要延迟，在原本帧间隙(intermission)中的一开始发送就发送OVERLOAD Frame
+   在帧间隙中，发现一个显性位时，立即发送OVERLOAD Frame
+   
+18.帧间隙
+    包括intermission 和 Bus Idle
+    intermission            三个隐性位
+    suspend transmission    一个"error passive"发送完一个message 紧接着intermission后，会发送8个隐性位后才能发送下一个报文
+    Bus Idle                可能无限长
+   
+                        
+
+    
+    
+   
