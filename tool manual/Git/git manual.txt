@@ -7,3 +7,11 @@
 	
 ３ 怎么选择远程分支下拉到本地
 	git pull <远程主机名> <远程分支名>:<本地分支名>
+    
+4  删除 untracked files
+    git clean -f
+   连 untracked 的目录也一起删掉
+   git clean -fd
+   
+5  删除本地分支
+   git branch -D br
