@@ -1,0 +1,38 @@
+一般事件驱动API
+1   on envVar 
+    Environment variable change (only CANoe)
+
+2   on key 
+    Press of a key 
+
+3   on timer
+    when a certain period of time elapses, the associated on timer procedure is called.
+    You would start a previously-defined timer with the function setTimer.
+     
+    on timer myTimer {
+    output(msg);
+    }
+    
+4   on start
+    Program start
+
+5   on preStart
+    Initialization of measurement (before start)
+
+
+
+
+CAN相关驱动API
+    
+1   on message
+    Receipt of a CAN message.
+
+    eg:
+    on message * {
+    output(this);
+    };
+    
+2   output 
+    Outputs a message or an Error Frame from the program block
+    
+    
