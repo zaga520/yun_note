@@ -1,5 +1,8 @@
 1 本地两个分支的合并？
    在需要合并的本地分支处 使用命令 git merge [需要合并进来的分支]
+   当前分支合并到另一分支时，如果没有分歧解决，就会直接移动文件指针。这个过程叫做fastforward --no-ff 禁止使用fastforward
+   git merge --no-ff [需要合并进来的分支]
+
    
 2 在服务器建立分支
 	在需要上传的本地分支处 使用命令 git push origin [需要新建的远程分支xx]
@@ -15,3 +18,27 @@
    
 5  删除本地分支
    git branch -D br
+   
+6  删除远程分支 
+git push origin --delete Chapater6
+   
+6 新建一个分支
+  git branch 分支名
+  
+7 merge 使用beyond compare
+https://www.scootersoftware.com/support.php?zz=kb_vcs#gitwindows
+
+8 列出所有分支的变更记录
+  gitk --all
+
+  git config --global diff.tool bc3
+  git config --global difftool.bc3.path "c:/Program Files (x86)/Beyond Compare 3/bcomp.exe"
+  
+  git config --global merge.tool bc3
+  git config --global mergetool.bc3.path "c:/Program Files (x86)/Beyond Compare 3/bcomp.exe"
+  
+  git config --global diff.tool bc3
+  git config --global difftool.bc3.path "c:/Program Files (x86)/Beyond Compare 4/bcomp.exe"
+
+  git config --global merge.tool bc3
+  git config --global mergetool.bc3.path "c:/Program Files (x86)/Beyond Compare 4/bcomp.exe"
