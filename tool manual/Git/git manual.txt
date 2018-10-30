@@ -30,6 +30,11 @@ https://www.scootersoftware.com/support.php?zz=kb_vcs#gitwindows
 
 8 列出所有分支的变更记录
   gitk --all
+  
+9 	git diff 不加参数即默认比较工作区与暂存区
+	比较暂存区与最新本地版本库git diff --cached  [<path>...]
+	比较工作区与最新本地版本库git diff HEAD [<path>...]  如果HEAD指向的是master分支，那么HEAD还可以换成master
+	
 
   git config --global diff.tool bc3
   git config --global difftool.bc3.path "c:/Program Files (x86)/Beyond Compare 3/bcomp.exe"
