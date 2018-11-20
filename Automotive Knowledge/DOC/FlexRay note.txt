@@ -1,0 +1,22 @@
+一种总线，用于一些好车上，贵些
+
+分两个段
+static segment
+dynamic segment
+
+每次只有一个ECU在向总线上写数据，一个bit保持8个周期
+其他ECU都在侦听，侦听至少5个周期
+
+帧结构
+Transmission Start Signal
+Frame Start Signal
+m次
+{
+Byte Start Signal0
+Byte Start Signal1
+bit of byte[0 - 7]
+}
+Frame End Signal
+Transmission End Signal
+
+平时总线保持高电平，启动信号则为低电平，为低则表示数据的到来
