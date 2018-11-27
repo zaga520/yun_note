@@ -20,3 +20,8 @@ Frame End Signal
 Transmission End Signal
 
 平时总线保持高电平，启动信号则为低电平，为低则表示数据的到来
+
+FlexRay supports single- and dual-channel configurations which consist of one or two pairs of wires respectively. 
+
+Topology
+Multi-drop Bus
