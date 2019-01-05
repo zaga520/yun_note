@@ -35,6 +35,19 @@ https://www.scootersoftware.com/support.php?zz=kb_vcs#gitwindows
     git branch -m old_branch new_branch 
 10 删除远程分支
     git push origin :old_branch
+
+11 放弃本地的文件修改，
+   git reset --hard FETCH_HEAD
+   FETCH_HEAD表示上一次成功git pull之后形成的commit点
+
+12 修改注释
+   git commit --amend
+
+13 tag
+   查看当前tag
+   git tag
+   切换到tag中
+   git checkout tag
  
 * 	git diff 不加参数即默认比较工作区与暂存区
 	比较暂存区与最新本地版本库git diff --cached  [<path>...]
