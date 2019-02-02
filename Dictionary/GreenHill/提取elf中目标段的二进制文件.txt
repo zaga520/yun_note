@@ -1,0 +1,20 @@
+gmemfile [options] executable_file [-o fn]
+options:
+    -byte   b of n   Only output data byte numbers b every n (max 32) bytes
+                     where b is a byte number (1-n), range b1-b2 (1<=b1<=b2<=n)
+                     or unordered list b1,b2[,b3]* (1 <= list <= n)
+    -end    n        Specify end address or section in the executable
+    -fill1  n1 n2 v  Fill 1 byte value v from sections or addresses n1 to n2
+    -fill2  n1 n2 v  Fill 2 byte value v from sections or addresses n1 to n2
+    -fill4  n1 n2 v  Fill 4 byte value v from sections or address n1 to n2
+    -help            This listing
+    -hole   n        Display error if a hole > n exists between sections
+                     A warning is displayed at 4096 bytes
+    -import n  fn    Import data from file fn and locate at address n
+    -map    fn       Display a map of the image in file fn
+    -o      fn       Specify the output filename (default:progname.bin )
+    -size   n        Specify the size of the output file
+    -skip   sn       Do not output data for specified section
+    -start  n        Specify start address or section in the executable
+    -w               Do not display warnings
+    
